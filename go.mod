@@ -1,6 +1,6 @@
 module krc20
 
-go 1.21.4
+go 1.20
 
 require github.com/p2eengineering/kalp-sdk-public v0.0.0-20240709111532-b1e8d8fef366
 
