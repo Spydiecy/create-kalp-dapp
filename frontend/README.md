@@ -66,12 +66,15 @@ Connecting a frontend application to a blockchain involves interacting with smar
 ```sh
 kalp-dapp-frontend
 ├── src
-│   ├── components
+│   ├── app
+         └── favicon.ico
+         └── globals.css
+         └── page.tsx 
 │   ├── hooks
 │   │   └── useKalpApi.ts   (Your API hook)
 │   ├── pages
-│   ├── styles
-│   └── index.tsx
+│   
+│   
 ├── public
 ├── package.json
 ├── tsconfig.json
