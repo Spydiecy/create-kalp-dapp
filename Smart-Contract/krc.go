@@ -222,10 +222,6 @@ func (s *SmartContract) TransferFrom(sdk kalpsdk.TransactionContextInterface, fr
 	var currentAllowance int
 	currentAllowance, _ = strconv.Atoi(string(currentAllowanceBytes)) // Error handling not needed since Itoa() was used when setting the totalSupply, guaranteeing it was an integer.
 
-	// Check if transferred value is less than allowance
-	if currentAllowance < value {
-		return fmt.Errorf("spender does not have enough allowance for transfer")
-	}
 
 	// Initiate the transfer
 	err = transferHelper(sdk, from, to, value)
