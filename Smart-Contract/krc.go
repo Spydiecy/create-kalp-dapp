@@ -207,25 +207,25 @@ func (s *SmartContract) TransferFrom(sdk kalpsdk.TransactionContextInterface, fr
 		return fmt.Errorf("failed to get client id: %v", err)
 	}
 
-	// Create allowanceKey
-	allowanceKey, err := sdk.CreateCompositeKey(allowancePrefix, []string{from, spender})
-	if err != nil {
-		return fmt.Errorf("failed to create the composite key for prefix %s: %v", allowancePrefix, err)
-	}
+	// // Create allowanceKey
+	// allowanceKey, err := sdk.CreateCompositeKey(allowancePrefix, []string{from, spender})
+	// if err != nil {
+	// 	return fmt.Errorf("failed to create the composite key for prefix %s: %v", allowancePrefix, err)
+	// }
 
-	// Retrieve the allowance of the spender
-	currentAllowanceBytes, err := sdk.GetState(allowanceKey)
-	if err != nil {
-		return fmt.Errorf("failed to retrieve the allowance for %s from world state: %v", allowanceKey, err)
-	}
+	// // Retrieve the allowance of the spender
+	// currentAllowanceBytes, err := sdk.GetState(allowanceKey)
+	// if err != nil {
+	// 	return fmt.Errorf("failed to retrieve the allowance for %s from world state: %v", allowanceKey, err)
+	// }
 
-	var currentAllowance int
-	currentAllowance, _ = strconv.Atoi(string(currentAllowanceBytes)) // Error handling not needed since Itoa() was used when setting the totalSupply, guaranteeing it was an integer.
+	// var currentAllowance int
+	// currentAllowance, _ = strconv.Atoi(string(currentAllowanceBytes)) // Error handling not needed since Itoa() was used when setting the totalSupply, guaranteeing it was an integer.
 
 	// Check if transferred value is less than allowance
-	if currentAllowance < value {
-		return fmt.Errorf("spender does not have enough allowance for transfer")
-	}
+	// if currentAllowance < value {
+	// 	return fmt.Errorf("spender does not have enough allowance for transfer")
+	// }
 
 	// Initiate the transfer
 	err = transferHelper(sdk, from, to, value)
@@ -233,11 +233,11 @@ func (s *SmartContract) TransferFrom(sdk kalpsdk.TransactionContextInterface, fr
 		return fmt.Errorf("failed to transfer: %v", err)
 	}
 
-	// Decrease the allowance
-	updatedAllowance, err := sub(currentAllowance, value)
-	if err != nil {
-		return err
-	}
+	// // Decrease the allowance
+	// updatedAllowance, err := sub(currentAllowance, value)
+	// if err != nil {
+	// 	return err
+	// }
 
 	// err = sdk.PutStateWithoutKYC(allowanceKey, []byte(strconv.Itoa(updatedAllowance)))
 	// if err != nil {
