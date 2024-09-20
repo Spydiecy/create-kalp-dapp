@@ -16,7 +16,7 @@ const decimalsKey = "decimals"
 const totalSupplyKey = "totalSupply"
 
 // Define objectType names for prefix
-const allowancePrefix = "allowance"
+// const allowancePrefix = "allowance"
 
 // Define key names for options
 
