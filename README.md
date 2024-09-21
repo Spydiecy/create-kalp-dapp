@@ -8,6 +8,8 @@
 
 A full-stack starter template featuring Next.js & Go, designed for building dApps and developing smart contracts on the Kalp DLT blockchain. This starter kit provides a simple greeting dApp to demonstrate interaction with a Kalp DLT smart contract.
 
+![image](https://github.com/user-attachments/assets/d1d66943-d36e-4ba8-944b-6655ec159757)
+
 ## 🚀 Quick Start
 
 ```sh
