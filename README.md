@@ -114,6 +114,8 @@ npm run dev
 
 Visit `http://localhost:3000` to see your dApp in action.
 
+![image](https://github.com/user-attachments/assets/afb392bd-4653-4325-a2d2-295d4527cac8)
+
 ## 🔧 Interacting with the Smart Contract
 
 The frontend includes a simple interface to interact with your greeting smart contract:
