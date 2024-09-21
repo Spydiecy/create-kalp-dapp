@@ -1,73 +1,73 @@
 "use client"
+
 import { useState } from 'react';
 
 export const useKalpApi = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<Error | null>(null);
 
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+  const contractId = process.env.NEXT_PUBLIC_CONTRACT_ID;
 
-  const callApi = async (endpoint: string, args : { [key: string]: any }) => {
+  const callApi = async (endpoint: string, args: { [key: string]: any } = {}) => {
+    if (!contractId) {
+      throw new Error('Contract ID is not set. Please check your environment variables.');
+    }
+
     setError(null);
+    setLoading(true);
+
     const params = {
       network: 'TESTNET',
       blockchain: 'KALP',
-      walletAddress: '928bc86952ebb55788e2042ad478b8c1db3ded0d',
+      walletAddress: '', // This should be replaced with the actual user's wallet address in a real application
       args: args,
     };
 
     try {
+      console.log(`Calling API: ${endpoint}`, params);
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-api-key': apiKey!,
+          'x-api-key': apiKey || '',
         },
         body: JSON.stringify(params),
       });
 
       const data = await response.json();
+      console.log(`Full API Response:`, data);
+      
+      if (data.result) {
+        console.log(`Result data:`, data.result);
+      } else {
+        console.log(`No result data found in the response`);
+      }
 
       if (!response.ok) {
-        throw new Error(data.message || 'Something went wrong');
+        throw new Error(data.message || `API call failed with status ${response.status}`);
       }
+
       setLoading(false);
       return data;
-    } catch (err : any) {
+    } catch (err: any) {
+      console.error(`API Error:`, err);
       setError(err);
       setLoading(false);
       throw err;
     }
   };
 
-  const claim = async (address : string) => {
-    setLoading(true);
-    const endpoint =
-      'https://gateway-api.kalp.studio/v1/contract/kalp/invoke/M5fb2tJjsQk6unfWDttcTxkp1GC129dr1726253658000/Claim';
-    const args = {
-      amount: 100,
-      address: address,
-    };
+  const getGreeting = async () => {
+    const endpoint = `https://gateway-api.kalp.studio/v1/contract/kalp/query/${contractId}/GetGreeting`;
+    return callApi(endpoint);
+  };
+
+  const setGreeting = async (greeting: string) => {
+    const endpoint = `https://gateway-api.kalp.studio/v1/contract/kalp/invoke/${contractId}/SetGreeting`;
+    const args = { greeting };
     return callApi(endpoint, args);
   };
 
-  const balanceOf = async (account : string) => {
-    const endpoint =
-      'https://gateway-api.kalp.studio/v1/contract/kalp/query/M5fb2tJjsQk6unfWDttcTxkp1GC129dr1726253658000/BalanceOf';
-    const args = {
-      account: account,
-    };
-    return callApi(endpoint, args);
-  };
-
-  const totalSupply = async () => {
-    const endpoint =
-      'https://gateway-api.kalp.studio/v1/contract/kalp/query/M5fb2tJjsQk6unfWDttcTxkp1GC129dr1726253658000/TotalSupply';
-    const args = {};
-    return callApi(endpoint, args);
-  };
-
-  return { claim, balanceOf, totalSupply, loading, error };
+  return { getGreeting, setGreeting, loading, error };
 };
-
-

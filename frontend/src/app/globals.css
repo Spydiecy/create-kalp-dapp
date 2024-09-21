@@ -1,13 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #171717;
-  --foreground: #ffffff;
+  --background: #f4f4f4;
+  --foreground: #000000;
+  --primary: #000000;
+  --primary-hover: #333333;
+  --secondary: #ffffff;
+  --secondary-hover: #f0f0f0;
 }
 
 body {
+  font-family: 'Inter', sans-serif;
   color: var(--foreground);
   background: var(--background);
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold mb-4;
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+
+  h3 {
+    @apply text-lg;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-semibold transition duration-200 ease-in-out;
+  }
+
+  .btn-primary {
+    @apply bg-black text-white hover:bg-gray-800;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-black border border-black hover:bg-gray-100;
+  }
+
+  .input {
+    @apply border border-gray-300 p-2 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-gray-400;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply max-w-5xl mx-auto px-4;
+  }
 }
