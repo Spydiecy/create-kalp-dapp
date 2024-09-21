@@ -1,6 +1,6 @@
 # create-kalp-dapp
 
-![Kalp DLT](templates/frontend/src/app/favicon.ico)
+![Kalp DLT](/frontend/src/app/favicon.ico)
 
 ![Platform](https://img.shields.io/badge/platform-Kalp%20DLT-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
