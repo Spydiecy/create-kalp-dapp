@@ -129,10 +129,11 @@ The `useKalpApi` hook in `src/hooks/useKalpApi.tsx` handles all API calls to you
 
 ## ➡️ Contributing
 
-We welcome contributions! Please see our CONTRIBUTING.md file for details on how to get started.
+We welcome contributions! Please see our [CONTRIBUTING.md](https://github.com/Spydiecy/create-kalp-dapp/blob/main/CONTRIBUTING.md) file for details on how to get started.
 
 ## ⚖️ License
 
-create-kalp-dapp is licensed under the MIT License.
+create-kalp-dapp is licensed under the [MIT License](https://github.com/Spydiecy/create-kalp-dapp/blob/main/LICENSE).
+
 
 ⭐️ If you find this project helpful, please give it a star on GitHub!
