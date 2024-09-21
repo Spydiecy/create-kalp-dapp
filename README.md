@@ -77,10 +77,18 @@ The main smart contract file is `krc.go`. It includes a simple greeting contract
    - Name: Enter a name for your smart contract
    - Category: Choose a category
    - Description: Add a description (optional)
+
+   ![image](https://github.com/user-attachments/assets/39f41f16-a311-4427-8284-b9303872aa9e)
+
 5. Upload your `backend.zip` file (zip the contents of the `backend` folder)
+
+   ![image](https://github.com/user-attachments/assets/104f9955-05ce-4597-8348-628cf3e414ca)
+
 6. Deploy your contract
 
 After deployment, Kalp Studio will provide you with API endpoints for each function of your smart contract.
+
+   ![image](https://github.com/user-attachments/assets/a223d7b9-d972-48b0-9aa2-06b7bea5a00f)
 
 ### Generating API Key
 
